@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'drf_yasg',
     'apps.books',
 
 ]
@@ -55,9 +56,28 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'OnlineBookStore.urls'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
     ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',  # Use built-in pagination
+    'PAGE_SIZE': 10,
+}
+
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+        }
+    },
+    'DEFAULT_INFO': 'your_project.urls.api_info',
 }
 
 TEMPLATES = [
@@ -76,7 +96,9 @@ TEMPLATES = [
         },
     },
 ]
-
+REST_AUTH_SERIALIZERS = {
+    "PASSWORD_RESET_SERIALIZER": "dj_accounts.serializers.PasswordResetSerializer"
+}
 WSGI_APPLICATION = 'OnlineBookStore.wsgi.application'
 
 

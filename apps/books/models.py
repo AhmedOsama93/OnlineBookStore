@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.translation import gettext as _
 
@@ -15,7 +16,12 @@ class Book(models.Model):
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, related_name='reviews', on_delete=models.CASCADE)
-    rating = models.IntegerField()
+    rating = models.IntegerField(
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(5)
+        ]
+    )
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
