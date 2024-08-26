@@ -8,6 +8,7 @@ class Book(models.Model):
     title = models.CharField(max_length=100, verbose_name=_("Title"))
     author = models.CharField(max_length=100, verbose_name=_("Author"))
     description = models.TextField(max_length=400, verbose_name=_("Description"))
+    content = models.TextField(max_length=400, verbose_name=_("Content"))
 
     def __str__(self):
         return self.title
