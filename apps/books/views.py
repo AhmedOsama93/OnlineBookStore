@@ -1,6 +1,7 @@
 from rest_framework import permissions
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
 from rest_framework import status
+from django.shortcuts import get_object_or_404
 
 from apps.books.models import Book, Review
 from apps.books.serializers import BookSerializer, ReviewSerializer
@@ -14,8 +15,12 @@ class BookListView(ListAPIView):
 
 
 class BookDetailView(RetrieveAPIView):
-    queryset = Book.objects.all()
     serializer_class = BookSerializer
+
+    def get(self, request, *arg, **kwargs):
+        book = get_object_or_404(Book, id=kwargs.get('book_id'))
+        serializer = self.serializer_class(book)
+        return Response(serializer.data)
 
 
 class ReviewCreateView(CreateAPIView):

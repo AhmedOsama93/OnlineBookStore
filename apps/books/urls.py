@@ -17,9 +17,8 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
-    path('books/', BookListView.as_view(), name='book-list'),
-    path('books/<int:pk>/', BookDetailView.as_view(), name='book-detail'),
-    path('books/<int:book_id>/reviews/', ReviewCreateView.as_view(), name='review-create'),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('', BookListView.as_view(), name='book-list'),
+    path('<int:pk>/', BookDetailView.as_view(), name='book-detail'),
+    path('<int:book_id>/reviews/', ReviewCreateView.as_view(), name='review-create'),
 
 ]
