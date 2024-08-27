@@ -31,6 +31,6 @@ class BookDetailView(RetrieveAPIView):
         },
     )
     def get(self, request, *args, **kwargs):
-        book = get_object_or_404(Book, id=kwargs.get('book_id'))
+        book = get_object_or_404(Book, pk=kwargs.get('book_id'))
         serializer = self.serializer_class(book)
         return Response(serializer.data)

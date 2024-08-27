@@ -18,9 +18,9 @@ schema_view = get_schema_view(
 )
 
 
-urlpatterns = [
+urlpatterns = [ 
     path('', BookListView.as_view(), name='book-list'),
-    path('<int:pk>/', BookDetailView.as_view(), name='book-detail'),
+    path('<int:book_id>/', BookDetailView.as_view(), name='book-detail'),
     path('<int:book_id>/reviews/', ReviewListView.as_view(), name='review-list'),
     path('<int:book_id>/reviews/create/', ReviewCreateView.as_view(), name='review-create'),
 
