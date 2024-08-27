@@ -37,7 +37,8 @@ class ReviewListView(ListAPIView):
         responses={
             200: ReviewSerializer(many=True),
             404: 'Book not found',
-        }
+        },
+        response_body=ReviewSerializer
     )
     def get(self, request, *args, **kwargs):
         book = get_object_or_404(Book, id=kwargs.get('book_id'))
