@@ -1,7 +1,7 @@
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 
-from apps.books.models import Review, Book
+from apps.books.models import Review
 
 
 @receiver(pre_save, sender=Review)

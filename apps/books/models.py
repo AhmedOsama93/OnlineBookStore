@@ -32,5 +32,10 @@ class Review(models.Model):
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['book']),
+        ]
+
     def __str__(self):
         return f"{self.user.username} - {self.book.title}"
