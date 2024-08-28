@@ -12,7 +12,7 @@ services:
 
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver localhost:8000
     volumes:
       - .:/app
     ports:
@@ -20,11 +20,11 @@ services:
     depends_on:
       - db
     environment:
-      - DJANGO_DB_HOST=db
+      - DJANGO_DB_HOST=localhost
       - DJANGO_DB_PORT=5432
-      - DJANGO_DB_NAME=mydatabase
-      - DJANGO_DB_USER=myuser
-      - DJANGO_DB_PASSWORD=mypassword
+      - DJANGO_DB_NAME=bookstore
+      - DJANGO_DB_USER=bookstore_user
+      - DJANGO_DB_PASSWORD=123
 
 volumes:
   postgres_data:
