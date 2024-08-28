@@ -12,15 +12,16 @@
     python manage.py runserver
 ```
 
-
 ## Deploy Steps
+
 1. clone repo
 
-2. copy `.env.example` to `.env`
+2. copy `.env`
 
 3. set `.env` values
 
 4. fresh installation
+
 ```
     docker-compose up --build -d
 
@@ -34,6 +35,7 @@
 ```
 
 5. Handling SSL renewals
+
 ```
 docker-compose run --rm certbot sh -c "certbot renew"
 ```
@@ -57,8 +59,8 @@ docker-compose run --rm certbot sh -c "certbot renew"
             0 0 * * 6 sh /path/to/renew.sh
         ```
 
-### ref:
-* Docker reference:
-  * https://londonappdeveloper.com/django-docker-deployment-with-https-using-letsencrypt/
+### References
 
-
+* Docker deployment with HTTPS:
+    * [Django Docker Deployment with HTTPS using Let's Encrypt]
+    * (https://londonappdeveloper.com/django-docker-deployment-with-https-using-letsencrypt/)
