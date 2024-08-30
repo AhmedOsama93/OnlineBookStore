@@ -21,6 +21,22 @@
     python manage.py runserver
 ```
 
+## Run tests with coverage
+
+### Generate and display the coverage report in the terminal
+
+### Generate an HTML report (optional)
+
+```
+
+  coverage run manage.py test
+      
+  coverage report
+  
+  coverage html
+      
+```
+
 ## Deploy Steps
 
 1. clone repo
