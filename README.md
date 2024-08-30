@@ -52,8 +52,6 @@
      docker-compose up --build
 ```
 
-## Run tests
-
 
 ### References
 
