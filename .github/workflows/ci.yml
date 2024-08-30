@@ -31,10 +31,6 @@ jobs:
         pip install -r requirements.txt
         pip install coverage
 
-    - name: Run migrations
-      run: |
-        python manage.py migrate
-
     - name: Run tests with coverage
       run: |
         coverage run manage.py test
