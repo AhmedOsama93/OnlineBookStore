@@ -51,7 +51,12 @@
      docker-compose down                                                                                                                                                  git:main*
      docker-compose up --build
 ```
-
+## Use app
+- register as admin
+- log in
+- create book
+- go to http://0.0.0.0:8000/swagger/
+- test all apis
 
 ### References
 
