@@ -1,5 +1,14 @@
 # OnlineBookStore
 
+## Database
+    
+```
+    create database
+    connect to database
+    update database in .env
+```
+
+
 ## Dev Steps
 
 ```
@@ -23,41 +32,12 @@
 4. fresh installation
 
 ```
-    docker-compose up --build -d
-
-    docker-compose run app bash -c "python manage.py collectstatic --no-input --clear"
-    
-    docker-compose run --rm certbot /opt/certify-init.sh
-
-    docker-compose down
-    
-    docker-compose up
+     docker-compose down                                                                                                                                                  git:main*
+     docker-compose up --build
 ```
 
-5. Handling SSL renewals
+## Run tests
 
-```
-docker-compose run --rm certbot sh -c "certbot renew"
-```
-
-6. Automatic SSL renwwals
-    * copy `renew.sh` to `home` directory
-    * edit `renew.sh`
-        ```
-            #!/bin/sh
-            set -e
-            
-            cd project/path
-            /usr/local/bin/docker-compose run --rm certbot certbot renew
-        ```
-    * Then, run `chmod +x renew.sh` to make it executable. Then run:
-        ```
-            crontab -e
-        ```
-    * Then add the following:
-        ```
-            0 0 * * 6 sh /path/to/renew.sh
-        ```
 
 ### References
 
