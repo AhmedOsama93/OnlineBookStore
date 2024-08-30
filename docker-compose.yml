@@ -6,9 +6,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: mydatabase
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: bookstore
+      POSTGRES_USER: bookstore_user
+      POSTGRES_PASSWORD: 123
 
   web:
     build: .
@@ -22,9 +22,9 @@ services:
     environment:
       - DJANGO_DB_HOST=db
       - DJANGO_DB_PORT=5432
-      - DJANGO_DB_NAME=mydatabase
-      - DJANGO_DB_USER=myuser
-      - DJANGO_DB_PASSWORD=mypassword
+      - DJANGO_DB_NAME=bookstore
+      - DJANGO_DB_USER=bookstore_user
+      - DJANGO_DB_PASSWORD=123
 
 volumes:
   postgres_data:
