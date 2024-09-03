@@ -7,6 +7,7 @@ from rest_framework.generics import get_object_or_404
 
 from apps.books.models import Review, Book
 from apps.books.serializers import ReviewSerializer
+from django.utils.html import escape
 
 
 class ReviewCreateView(CreateAPIView):
@@ -23,7 +24,14 @@ class ReviewCreateView(CreateAPIView):
         }
     )
     def post(self, request, *args, **kwargs):
-        serializer = ReviewSerializer(context={'request': request, 'book_id': kwargs.get('book_id')}, data=request.data)
+        comment = request.data.get('comment', '')
+        sanitized_comment = escape(comment)
+        request.data['comment'] = sanitized_comment
+
+        serializer = ReviewSerializer(
+            context={'request': request, 'book_id': kwargs.get('book_id')},
+            data=request.data
+        )
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
