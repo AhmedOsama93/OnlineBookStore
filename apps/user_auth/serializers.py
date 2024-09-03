@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from captcha.fields import CaptchaField
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -9,6 +10,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
+    captcha = CaptchaField()
+
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
