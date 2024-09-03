@@ -6,6 +6,7 @@ psycopg2-binary==2.9.9
 gunicorn==21.2.0
 psycopg2-binary==2.9.9
 django-environ==0.8.1
+django-simple-captcha==0.6.0
 coverage
 pytest
 pytest-django
