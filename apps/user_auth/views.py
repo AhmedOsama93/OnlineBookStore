@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate
 from rest_framework import generics, status
 from rest_framework.response import Response
+from rest_framework.throttling import UserRateThrottle
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import RegisterSerializer, TokenSerializer
 from drf_yasg.utils import swagger_auto_schema
@@ -8,6 +9,7 @@ from drf_yasg.utils import swagger_auto_schema
 
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
+    throttle_classes = [UserRateThrottle]
 
     @swagger_auto_schema(
         request_body=RegisterSerializer,

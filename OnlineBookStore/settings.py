@@ -63,6 +63,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
     ),
+    'DEFAULT_THROTTLE_RATES': {
+        'user': '5/hour',
+    },
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',  # Use built-in pagination
     'PAGE_SIZE': 10,
 }
